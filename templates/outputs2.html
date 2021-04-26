@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="http://obj-cache.cloud.ruanbekker.com/favicon.ico">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Bookmarks Search</title>
+
+  </head>
+  <body>
+
+
+  <div class="container">
+    <div style="background:transparent !important" class="jumbotron">
+      <div style="font-family: 'Pacifico', cursive;">
+        <p>
+          <center>
+          <font size="8">COVID-19 Paper Search</font>
+          </center>
+        </p>
+        <p>
+          <center>
+            <img src="{{url_for('static', filename='home_image.jpeg')}}" align="middle" />
+          </center>
+        </p>
+      </div>
+    </div>
+
+
+
+    <form action="/success" method="post">
+
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" name="text" autofocus>
+        <div class="input-group-btn">
+          <center/>
+            <button class="btn btn-primary btn-lg" type="submit"  >
+              <i class="glyphicon glyphicon-search" ></i>
+            </button>
+           <center/>
+        </div>
+      </div>
+    </form>
+
+   </div>
+  </body>
+  <br/><br/>
+  <div class="container" align="left">
+
+    <font size="4"> Total {{ l }} results are found about <i>{{q}}</i> </font>
+  </div class="container">
+
+  <div class="container" align="left">
+  {% block content %}
+  {% for indx in res %}
+
+      <h3>
+        <a href={{res[indx][0][2]}} size="5" color="blue">{{res[indx][0][0]}}</a>
+      </h3>
+
+      {% autoescape false %}
+      {{res[indx][0][3][:800]}}
+      {% endautoescape %}
+
+      <br/>
+    Created in {{ res[indx][0][1] }}
+      <a href={{res[indx][0][2]}}>{{res[indx][0][2]}}</a>
+    </p>
+
+  {% endfor %}
+{% endblock %}
+<div class="container">
+
+      </div>
+    </div>
+  </body>
+</html>

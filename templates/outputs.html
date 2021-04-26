@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="http://obj-cache.cloud.ruanbekker.com/favicon.ico">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Bookmarks Search</title>
+
+  </head>
+  <body>
+
+
+  <div class="container">
+    <div style="background:transparent !important" class="jumbotron">
+      <div style="font-family: 'Pacifico', cursive;">
+        <p>
+          <center>
+          <font size="8">COVID-19 Paper Search</font>
+          </center>
+        </p>
+        <p>
+          <center>
+            <img src="{{url_for('static', filename='home_image.jpeg')}}" align="middle" />
+          </center>
+        </p>
+      </div>
+    </div>
+
+
+
+    <form action="/success" method="post">
+
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" name="text" autofocus>
+        <div class="input-group-btn">
+          <center/>
+            <button class="btn btn-primary btn-lg" type="submit"  >
+              <i class="glyphicon glyphicon-search" ></i>
+            </button>
+           <center/>
+        </div>
+      </div>
+    </form>
+
+    <br><br>
+      <footer class="footer">
+        <p>&copy; 2021 Xuanyu Zhu </p>
+      </footer>
+   </div>
+  </body>
+
+  <center>
+      <h1> Total {{ l }} results are found </h1>
+  </center>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Stamp</th>
+        <th>Title</th>
+        <th>Url</th>
+      </tr>
+    </thead>
+
+{% for indx in res %}
+    <tbody>
+      <tr>
+        <th scope="row">{{ res[indx][0][1]}}</th>
+          <td>{{ res[indx][0][0] }}</td>
+          <td>{{ res[indx][0][2] }}</a></td>
+      </tr>
+    </tbody>
+{% endfor %}
+  </table>
+
+        <footer class="footer">
+          <p>&copy; 2017 Ruan Bekker</p>
+        </footer>
+
+      </div>
+    </div>
+  </body>
+</html>
