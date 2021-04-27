@@ -34,7 +34,7 @@ def success():
 
     dic_title_date_url = load_json('dic_title_date_url.json')
 
-    json_dic = load_json('data_id_content.json')
+    #json_dic = load_json('data_id_content.json')
 
     #initialize_elasticsearch(json_dic)
 
@@ -51,11 +51,10 @@ def success():
     res_lst = [x['_id'] for x in res]
     final_res = defaultdict(list)
     for i in res_lst:
-        dic_title_date_url[i].append(" ".join((" ".join(["<b><strong>{}</strong></b>".format(word) if word.strip() in query_tokenize.split() else word for word in dic_title_date_url[i][3].split(" ")])).split()[0:80]))
+        a = " ".join(str((" ".join(["<b><strong>{}</strong></b>".format(word) if word.strip() in query_tokenize.split() else word for word in str(dic_title_date_url[i][3]).split(" ")]))).split()[0:80])
+        dic_title_date_url[i].append(a)
         dic_title_date_url[i].remove(dic_title_date_url[i][3])
         final_res[i].append(dic_title_date_url[i])
-    with open('test.json', 'w') as fp:
-        json.dump(final_res, fp, ensure_ascii=False)
 
     return render_template('outputs2.html', res=final_res, q =query, l =len(res_lst))
     #return(3)

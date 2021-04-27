@@ -19,14 +19,13 @@ es = Elasticsearch()
 def main():
 
     ## library save to a json
-    # df = load_data()
-    # df_selected = data_dataframe(df.head(10000))
-    # dic_title_date_url = save_info(df_selected)
-    # save_info_dic(dic_title_date_url)
-    # start = time.process_time()
+    df = load_data()
+    df_selected = data_dataframe(df.head(30000))
+    dic_title_date_url = save_info(df_selected)
+    save_info_dic(dic_title_date_url)
     #
-    # df_tokenized= tokenizer(df_selected)
-    # save_dics(df_tokenized)
+    df_tokenized= tokenizer(df_selected)
+    save_dics(df_tokenized)
     json_dic = load_json('data_id_content.json')
 
     start = time.process_time()
